@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  node-server:
+    container_name: node-server
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ../:/usr/local/app/
+      - /usr/local/app/node_modules/
+    ports:
+      - '8080:8080'
+  mongodb:
+    container_name: mongodb
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - data-volume:/data/db
+
+volumes:
+  data-volume:
