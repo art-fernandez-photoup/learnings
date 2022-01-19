@@ -5,6 +5,7 @@ import helmet from "helmet";
 import { itemsRouter } from "./items/item.router";
 import { errorHandler } from "./middleware/error.middleware";
 import { notFoundHandler } from "./middleware/not-found.middleware";
+import connect from "./utils/dbconnect";
 
 dotenv.config();
 
@@ -26,4 +27,5 @@ app.use(notFoundHandler);
 
 app.listen(PORT, () => {
     console.log('Listening at ', PORT);
+    connect();
 });
